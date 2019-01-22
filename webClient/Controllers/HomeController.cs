@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using webClient.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 
 namespace webClient.Controllers
 {
     public class HomeController : Controller
     {
+        private IConfiguration _configuration;
+    
+        public HomeController(IConfiguration Configuration)
+        {
+            _configuration = Configuration;
+        }
+
         public IActionResult Index()
         {
+            //ViewData["key"] = _configuration["Google:clientSecret"];
             return View();
         }
 

@@ -35,6 +35,7 @@ namespace webClient
 
             // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddMvc();
+            services.AddSingleton<IConfiguration>(Configuration);
             System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             services.AddAuthentication(options =>
