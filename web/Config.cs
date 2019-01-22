@@ -122,7 +122,20 @@ namespace web
                         "api1"
                     },
                     AllowOfflineAccess = true
-                }
+                },
+                new Client
+                {
+                    ClientId = "deviceClient",
+                    AllowedGrantTypes = GrantTypes.DeviceFlow,
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    AllowedScopes = { "api1" }
+                },
             };
         }
     }
