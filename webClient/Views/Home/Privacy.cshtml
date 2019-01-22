@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Authentication;
+@{
     ViewData["Title"] = "Privacy Policy";
 }
 <h1>@ViewData["Title"]</h1>
@@ -12,3 +13,9 @@
         <dd>@claim.Value</dd>
     }
 </dl>
+<p>Obvs wouldn't do this is the real world!</p>
+<dt>access token</dt>
+<dd>@await ViewContext.HttpContext.GetTokenAsync("access_token")</dd>
+
+<dt>refresh token</dt>
+<dd>@await ViewContext.HttpContext.GetTokenAsync("refresh_token")</dd>
