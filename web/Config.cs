@@ -126,6 +126,7 @@ namespace web
                 new Client
                 {
                     ClientId = "deviceClient",
+                    ClientName = "Device flow client",
                     AllowedGrantTypes = GrantTypes.DeviceFlow,
 
                     // secret for authentication
@@ -134,7 +135,14 @@ namespace web
                         new Secret("secret".Sha256())
                     },
 
-                    AllowedScopes = { "api1" }
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
+                    },
+                    //means app can use refresh tokens. if true, user can revoke in grants UI
+                    AllowOfflineAccess = true
                 },
             };
         }
